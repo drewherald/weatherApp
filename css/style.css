@@ -35,31 +35,18 @@ button{
 }
 
 .locations{
-    display: grid;
+    display: flex;
     margin: 40px;
-    grid-gap: 32px 20px;
-    grid-template-columns: repeat(4, 1fr);
+    gap: 4vh;
     
 }
 
-@media screen and (max-width: 1000px) { 
-    .locations{
-      grid-template-columns: repeat(3, 1fr);
-      
-    }
-  }
-   
-  @media screen and (max-width: 700px) {
+@media screen and (max-width: 500px) {  
     .locations {
-      grid-template-columns: repeat(2, 1fr);
+      flex-direction: column;
     }
   }
-   
-  @media screen and (max-width: 500px) {  
-    .locations {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
+  
 
   .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -67,7 +54,7 @@ button{
     background-color: white;
     display: inline-block;
     text-align: center;
-    width: 150%;
+    width: 150px;
     border-radius: 20px;
     text-decoration: none;
 

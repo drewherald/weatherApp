@@ -15,15 +15,17 @@ page.addEventListener("submit", e => {
     .then(response => response.json())
     .then(data => {
         const { main, name, sys, weather } = data;
-        const icon = `https://openweathermap.org/img/wn/${
-            weather[0]["icon"]
-            }@2x.png`;
+       
+        
+    
  
         const li = document.createElement("li");
         li.classList.add("card");
+        console.log(iconChecker(weather[0]["icon"]));
+        console.log(weather[0]["icon"]);
         const newHTML = `
             <li class="card">
-                <i class="wi wi-night-sleet" style="font-size: 3em; text-align: center;"></i>
+                <i class="wi ${iconChecker(weather[0]["icon"])}" style="font-size: 3em; text-align: center;"></i>
                 <div class="card-info">
                     <h4><b>${name}</b></h4>
                     <p>${Math.round(main.temp*(9/5)+32)}°F <br> ${weather[0]["description"]}</p>
@@ -44,3 +46,65 @@ page.addEventListener("submit", e => {
     input.focus();
   });
 
+
+  function iconChecker(id){
+    if(id.includes("d")){
+        if(id.includes("01")){
+            return "wi-day-sunny";
+        }
+        if(id.includes("02")){
+            return "wi-day-cloudy";
+        }
+        if(id.includes("03")){
+            return "wi-cloud";
+        }
+        if(id.includes("04")){
+            return "wi-cloudy";
+        }
+        if(id.includes("09")){
+            return "wi-rain";
+        }
+        if(id.includes("10")){
+            return "wi-day-rain";
+        }
+        if(id.includes("11")){
+            return "wi-day-thunderstorm";
+        }
+        if(id.includes("13")){
+            return "wi-day-snow";
+        }
+        if(id.includes("50")){
+            return "wi-day-fog";
+        }
+    }
+
+    if(id.includes("n")){
+        if(id.includes("01")){
+            return "wi-night-clear";
+        }
+        if(id.includes("02")){
+            return "wi-night-alt-cloudy";
+        }
+        if(id.includes("03")){
+            return "wi-cloud";
+        }
+        if(id.includes("04")){
+            return "wi-night-alt-partly-cloudy";
+        }
+        if(id.includes("09")){
+            return "wi-night-alt-rain";
+        }
+        if(id.includes("10")){
+            return "wi-night-rain";
+        }
+        if(id.includes("11")){
+            return "wi-night-thunderstorm";
+        }
+        if(id.includes("13")){
+            return "wi-night-alt-snow";
+        }
+        if(id.includes("50")){
+            return "wi-night-fog";
+        }
+    }
+  }

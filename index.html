@@ -7,38 +7,20 @@
     <title>Weather</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/weather-icons.css">
+    <script src="js.js" defer></script>
 </head>
 <body>
     <div class="flex-container">
-        <h1>Herald Weather</h1>
-        <div class="searchBar">
-            <input type="text" placeholder="Enter a city...">
-            <button>Go</button>
+        <div class="searchBar"></div>
+            <h1>Herald Weather</h1>
+            <form class="form">
+                <input type="text" placeholder="Enter a city..." autofocus>
+                <button type="submit" id="go">Go</button>
+                <p class="msg"></p>
+            </form>
         </div>
 
-            <ul class="locations">
-                <li class="card">
-                    <i class="wi wi-night-sleet" style="font-size: 3em; text-align: center;"></i>
-                        <div class="card-info">
-                          <h4><b>Lexington</b></h4>
-                          <p>54, Sleet</p>
-                        </div>
-                </li>
-                <li class="card">
-                    <i class="wi wi-night-sleet" style="font-size: 3em; text-align: center;"></i>
-                        <div class="card-info">
-                          <h4><b>Lexington</b></h4>
-                          <p>54, Sleet</p>
-                        </div>
-                </li>
-            
-            
-            
-           </div>
-                    
-            
-       
-        </div>
+            <ul class="locations"></ul>
     </div>
 </body>
 </html>

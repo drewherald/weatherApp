@@ -19,8 +19,8 @@ page.addEventListener("submit", e => {
         
     
  
-        const li = document.createElement("li");
-        li.classList.add("card");
+        const li = document.createElement("div");
+        li.classList.add("miniflex");
         console.log(iconChecker(weather[0]["icon"]));
         console.log(weather[0]["icon"]);
         const newHTML = `

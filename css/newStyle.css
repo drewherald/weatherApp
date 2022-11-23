@@ -16,37 +16,55 @@
   }
 
 body{
-    background-color: #4e4e4e;
+    background-image: url(/img/img.jpeg);
+    background-size:     cover;
+    background-repeat:   no-repeat;
 }
 
 .flex-container{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    position: relative;
+
 }
 
-h1{
-    text-align: center;
-    font-family: Montserrat-Bold, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 8vh;
-    color: white;
-    padding: 3vh;
+.left{
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, .2); 
+    top: 0px;
+    left: 0px;
+    position: absolute;
 }
+
+.right{
+    flex-grow: 3;
+    height: 100%;
+    top: 0px;
+    right: 0px;
+    position: absolute;
+}
+
+
 
 .msg{
     color: white;
     text-align: center;
+    padding-top: 10vh;
+    padding-left: 10vh;
+    padding-right: 10vh;
+    margin-right: 8vh;
 }
 
 button{
     cursor: pointer;
-    height: 4vh;
-    width: 35vh;
-    margin-left: 2.5vh;
-    border-radius: 1vh;
+    height: 8vh;
+    width: 8vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     background-color: red;
-    margin: 3vh;
 }
 
 .locations{
@@ -83,7 +101,6 @@ button{
     width: 150px;
     border-radius: 20px;
     text-decoration: none;
-    padding: 2vh;
 
   }
   
@@ -108,12 +125,44 @@ button{
 
   i{
     padding-top: 1vh;
-    margin-bottom: 1vh;
   }
 
   input{
     box-sizing: border-box;
     width: 40vh;
+    border: 0px;
+    outline: none;
     height: 5vh;
     font-size: 2vh;
+    position: absolute;
+    top: 3vh;
+    background-color: rgba(0, 0, 0, 0); 
+    left: 10vh
+  }
+
+  hr{
+    height: 2px;
+    width: 50vh;
+    background-color: white;
+    border: 0px;
+    margin: 2vh;
+  }
+
+  .suggestions{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10vh;
+  }
+
+  .city{
+    margin-bottom: 2vh;
+  }
+
+  a{
+    text-decoration: none;
+    color: white;
+  }
+
+  #bottomCity{
+    margin: 0;
   }

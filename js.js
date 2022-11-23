@@ -15,14 +15,13 @@ page.addEventListener("submit", e => {
     .then(response => response.json())
     .then(data => {
         const { main, name, sys, weather } = data;
-       
-        
-    
+        console.log(main);
+        console.log(name);
+        console.log(sys);
+        console.log(weather);
  
         const li = document.createElement("div");
         li.classList.add("miniflex");
-        console.log(iconChecker(weather[0]["icon"]));
-        console.log(weather[0]["icon"]);
         const newHTML = `
             <li class="card">
                 <i class="wi ${iconChecker(weather[0]["icon"])}" style="font-size: 3em; text-align: center;"></i>

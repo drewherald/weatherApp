@@ -1,6 +1,6 @@
 *{
     font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: black;
+    color: white;
     margin: 0;
     padding: 0;
 }
@@ -43,13 +43,12 @@ body{
     height: 100%;
     top: 0px;
     right: 0px;
-    position: absolute;
+    position: relative;
 }
 
 
 
 .msg{
-    color: white;
     text-align: center;
     padding-top: 10vh;
     padding-left: 10vh;
@@ -148,21 +147,55 @@ button{
     margin: 2vh;
   }
 
-  .suggestions{
+  .suggestions, .xtraweather{
     display: flex;
     flex-direction: column;
     padding-left: 10vh;
   }
 
-  .city{
+  .city, .info{
     margin-bottom: 2vh;
-  }
-
-  a{
     text-decoration: none;
-    color: white;
   }
 
-  #bottomCity{
+  #bottom{
     margin: 0;
+  }
+
+  h4{
+    padding: 0;
+    margin: 0;
+    color:white
+  }
+
+  .mainInfo{
+    display: flex;
+    text-align: center;
+    position: absolute;
+    right: 10vh;
+    top: 80vh;
+  }
+
+  #temp{
+    font-size: 12vh;
+    padding-right: 4vh;
+  }
+
+  #city{
+    font-size: 6vh;
+    padding-top: 3vh;
+  }
+
+  #data{
+    font-size: 2vh;
+  }
+
+  #icon{
+    max-height: 8vh;
+    padding-top: 4vh;
+    padding-left: 4vh;
+  }
+
+  #positioning{
+    position: relative;
   }

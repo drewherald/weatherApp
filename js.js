@@ -21,23 +21,29 @@ function date(){
                 return datetime;
 }
 
-page.addEventListener("submit", e => {
-    e.preventDefault();
-    const inputVal = input.value;
+page.addEventListener("submit", e => {weatherCall(e);});
 
+london.addEventListener("click", e => {weatherCall(e, "london");});
+
+newYork.addEventListener("click", e => { weatherCall(e, "new+york");});
+
+tokyo.addEventListener("click", e => {weatherCall(e,"tokyo");});
+
+losAngeles.addEventListener("click", e => {weatherCall(e, "los+angeles");});
+
+function weatherCall(e, name){
+    e.preventDefault();
+
+    let inputVal = input.value;
+    if(inputVal==""){
+        inputVal = name
+    }
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${api}&units=metric`;
 
     fetch(url)
     .then(response => response.json())
     .then(data => {
         const { main, name, sys, weather, wind } = data;
-        console.log(main);
-        console.log(name);
-        console.log(sys);
-        console.log(weather);
-
-        console.log(date());
-
        
         const li = document.createElement("div");
         li.classList.add("mainInfo");
@@ -52,18 +58,16 @@ page.addEventListener("submit", e => {
         li.innerHTML = newHTML;
         list.replaceChild(li,document.querySelector(".mainInfo"));
 
-        const contain = document.createElement("div");
-        contain.classList.add("xtraweather");
-        const newerHTML = `
+        const container = document.createElement("div");
+        container.classList.add("xtraweather");
+        const newestHTML = `
             <h4 class="info" id="condition">Weather Conditions</h4>
             <p class="info" id="feelsLike"> Feels Like: ${Math.round(main.feels_like*(9/5)+32)}°F</p>
             <p class="info" id="humidity">Humidity: ${main.humidity}%</p>
             <p class="info" id="bottom">Wind Speed: ${wind.speed} MPH</p>
             `;
-        contain.innerHTML = newerHTML;
-        page.replaceChild(contain,document.querySelector(".xtraweather"));
-
-
+        container.innerHTML = newestHTML;
+        page.replaceChild(container,page.querySelector(".xtraweather"));
     })
     .catch(() => {
       msg.textContent = "Please enter a valid location";
@@ -73,8 +77,7 @@ page.addEventListener("submit", e => {
     msg.textContent = "";
     page.reset();
     input.focus();
-  });
-
+  }
 
   function iconChecker(id){
     if(id.includes("d")){
@@ -137,136 +140,3 @@ page.addEventListener("submit", e => {
         }
     }
   }
-
-
-  london.addEventListener("click", e => {
-    e.preventDefault();
-
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=${api}&units=metric`;
-
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const { main, name, sys, weather } = data;
-       
-        const li = document.createElement("div");
-        li.classList.add("mainInfo");
-        const newHTML = `
-            <p id="temp">${Math.round(main.temp*(9/5)+32)}°F</p>
-            <span id="city">${name}
-                <br>
-                <p id="data">${date()}</p>
-            </span>
-            <img src="/img/img.png" id="icon">
-        `;
-        li.innerHTML = newHTML;
-        list.replaceChild(li,document.querySelector(".mainInfo"));
-    })
-    .catch(() => {
-      msg.textContent = "Please enter a valid location";
-    });
-
-
-    msg.textContent = "";
-    page.reset();
-    input.focus();
-  });
-
-  newYork.addEventListener("click", e => {
-    e.preventDefault();
-
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=new+york&appid=${api}&units=metric`;
-
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const { main, name, sys, weather } = data;
-       
-        const li = document.createElement("div");
-        li.classList.add("mainInfo");
-        const newHTML = `
-            <p id="temp">${Math.round(main.temp*(9/5)+32)}°F</p>
-            <span id="city">${name}
-                <br>
-                <p id="data">${date()}</p>
-            </span>
-            <img src="/img/img.png" id="icon">
-        `;
-        li.innerHTML = newHTML;
-        list.replaceChild(li,document.querySelector(".mainInfo"));
-    })
-    .catch(() => {
-      msg.textContent = "Please enter a valid location";
-    });
-
-
-    msg.textContent = "";
-    page.reset();
-    input.focus();
-  });
-
-  tokyo.addEventListener("click", e => {
-    e.preventDefault();
-
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=${api}&units=metric`;
-
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const { main, name, sys, weather } = data;
-       
-        const li = document.createElement("div");
-        li.classList.add("mainInfo");
-        const newHTML = `
-            <p id="temp">${Math.round(main.temp*(9/5)+32)}°F</p>
-            <span id="city">${name}
-                <br>
-                <p id="data">${date()}</p>
-            </span>
-            <img src="/img/img.png" id="icon">
-        `;
-        li.innerHTML = newHTML;
-        list.replaceChild(li,document.querySelector(".mainInfo"));
-    })
-    .catch(() => {
-      msg.textContent = "Please enter a valid location";
-    });
-
-
-    msg.textContent = "";
-    page.reset();
-    input.focus();
-  });
-
-losAngeles.addEventListener("click", e => {
-    e.preventDefault();
-
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=los+angeles&appid=${api}&units=metric`;
-
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const { main, name, sys, weather } = data;
-       
-        const li = document.createElement("div");
-        li.classList.add("mainInfo");
-        const newHTML = `
-            <p id="temp">${Math.round(main.temp*(9/5)+32)}°F</p>
-            <span id="city">${name}
-                <br>
-                <p id="data">${date()}</p>
-            </span>
-            <img src="/img/img.png" id="icon">
-        `;
-        li.innerHTML = newHTML;
-        list.replaceChild(li,document.querySelector(".mainInfo"));
-    })
-    .catch(() => {
-      msg.textContent = "Please enter a valid location";
-    });
-
-
-    msg.textContent = "";
-    page.reset();
-    input.focus();
-  });

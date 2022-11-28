@@ -192,10 +192,22 @@ button{
 
   #icon{
     max-height: 8vh;
-    padding-top: 4vh;
-    padding-left: 4vh;
   }
 
   #positioning{
     position: relative;
   }
+
+ .weathercond{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2vh;
+  padding-left: 4vh;
+ }
+
+ #desc{
+  padding-top: 1vh;
+  text-align: center;
+ }

@@ -11,15 +11,14 @@ const feelsLike = document.querySelector("#feelsLike");
 const humidity = document.querySelector("#humidity");
 const pressure = document.querySelector("#bottom");
 
-function date(){
+function date(timezone){
     var currentdate = new Date(); 
-    var datetime = (currentdate.getMonth()+1) + "/"
-                +  currentdate.getDate() + "/" 
-                + currentdate.getFullYear() + " "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes();
-                return datetime;
+    currentdate.setSeconds(currentdate.getSeconds() + timezone);
+    let newest = currentdate.toUTCString();
+    newest = newest.slice(0, -7);
+    return newest;
 }
+
 
 page.addEventListener("submit", e => {weatherCall(e);});
 
@@ -43,17 +42,19 @@ function weatherCall(e, name){
     fetch(url)
     .then(response => response.json())
     .then(data => {
-        const { main, name, sys, weather, wind } = data;
-       
+        const { main, name, sys, weather, wind, timezone } = data;
         const li = document.createElement("div");
         li.classList.add("mainInfo");
         const newHTML = `
             <p id="temp">${Math.round(main.temp*(9/5)+32)}°F</p>
             <span id="city">${name}
                 <br>
-                <p id="data">${date()}</p>
+                <p id="data">${date(timezone)}</p>
             </span>
-            <img src="/img/img.png" id="icon">
+            <div class="weathercond">
+                <i class="wi ${iconChecker(weather[0]["icon"])}" style="font-size: 3em; text-align: center;" id="icon"></i>
+                <p id="desc">${capitalize(weather[0]["description"])}</p>
+            </div>
         `;
         li.innerHTML = newHTML;
         list.replaceChild(li,document.querySelector(".mainInfo"));
@@ -139,4 +140,13 @@ function weatherCall(e, name){
             return "wi-night-fog";
         }
     }
+  }
+
+  function capitalize(str){
+    const words = str.split(" ");
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+    
+    return words.join(" ");
   }

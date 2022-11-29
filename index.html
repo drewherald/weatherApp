@@ -5,23 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/newStyle.css">
     <link rel="stylesheet" href="/css/weather-icons.css">
     <script src="js.js" defer></script>
 </head>
 <body>
     <div class="flex-container">
-        <div class="searchBar"></div>
-            <h1>Herald Weather</h1>
+        <div class="left">
             <form class="form">
                 <input type="text" placeholder="Enter a city..." autofocus>
                 <br>
                 <button type="submit" id="go">Go</button>
                 <p class="msg"></p>
+                <hr>
+                <br>
+                <div class="suggestions">
+                    <a href="" class="city" id="newYork">New York</a>
+                    <a href="" class="city" id="london">London</a>
+                    <a href="" class="city" id="tokyo">Tokyo</a>
+                    <a href="" class="city" id="la">Los Angeles</a>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="xtraweather">
+                    <h4 class="info" id="condition">Weather Conditions</h4>
+                    <p class="info" id="feelsLike"> Feels Like:</p>
+                    <p class="info" id="humidity">Humidity:</p>
+                    <p class="info" id="bottom">Wind Speed:</p>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="fivedayforecast">
+                    <h4 class="info">5 Day Forecast</h4>
+                    <p class="info">Monday:</p>
+                    <p class="info">Tuesday:</p>
+                    <p class="info">Wednesday:</p>
+                    <p class="info">Thursday:</p>
+                    <p class="info" id="bottom">Friday:</p>
+                </div>
+                <br>
+                <hr>
+                <br>
             </form>
         </div>
-
-            <ul class="locations"></ul>
+        <div class="right">
+                <div class="mainInfo">
+                
+                    <!--
+                    <p id="temp">16°F</p>
+                    <span id="city">London
+                        <br>
+                        <p id="data">06:09 - Wed, Nov 23 '22</p>
+                    </span>
+                    <div class="weathercond">
+                        <img src="/img/img.png" id="icon">
+                        <p id="desc">hazy</p>
+                    </div>
+                    -->
+                    
+                    
+                
+                </div>
+            
+            
+        </div>
     </div>
 </body>
 </html>
